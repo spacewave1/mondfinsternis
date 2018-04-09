@@ -1,6 +1,6 @@
 public class StandardWave : Wave
 {
-    protected override void SetValues()
+    protected void SetValues()
     {
 			wait = 10;
 			rate = 2;

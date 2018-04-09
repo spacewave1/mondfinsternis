@@ -2,16 +2,17 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 
-public abstract class Wave : MonoBehaviour
+[System.Serializable]
+public class Wave 
 {
-    protected int wait;
-    protected float rate;
-    protected int amount;
-    protected int remaining;
-    protected int spread;
-    protected int direction;
-    protected GameObject[] asteroidPrefabs;
-    protected int[] hostileFrequencies;
+    public int wait;
+    public float rate;
+    public int amount;
+    public int remaining;
+    public int spread;
+    public int direction;
+    public GameObject[] prefabs;
+    public int[] hostileFrequencies;
     //spawn bounds
     protected int yMin;
     protected int yMax;
@@ -30,7 +31,7 @@ public abstract class Wave : MonoBehaviour
         int[] frequencies = { small, large, fast };
         hostileFrequencies = frequencies;
     }
-    protected abstract void SetValues();
+    //protected void SetValues();
     protected void SetSpawnBounds()
     {
         rMin = direction - (spread / 2);
@@ -43,7 +44,7 @@ public abstract class Wave : MonoBehaviour
     {
       	//this.asteroidPrefabs = WaveSpawner.Instance.GetPrefabs();
 		direction = Random.Range(0,360);
-      	SetValues();
+      	//SetValues();
       	SetSpawnBounds();
       	remaining = amount;
     }
@@ -72,7 +73,7 @@ public abstract class Wave : MonoBehaviour
 
     public GameObject GetRandomAsteroidType()
     {
-      GameObject asteroidType = asteroidPrefabs[Calc.WeightedRandomIndex(hostileFrequencies)];
+      GameObject asteroidType = prefabs[Calc.WeightedRandomIndex(hostileFrequencies)];
       return asteroidType;
     }
     public string GetDebugText(){
@@ -89,36 +90,7 @@ public abstract class Wave : MonoBehaviour
         debugText += "\nr (" + rMin + ", " + rMax +")";
         return debugText;
     }
-    protected void Awake(){
-      this.enabled = false;
-    }
-    public void Start(){
-
-      StartCoroutine(Spawn());
-
-    }
-    protected IEnumerator Spawn()
-    {
-
-        //if (AsteroidController.asteroidCount == 0)
-        {
-          while (wait > 0){
-            yield return new WaitForSeconds(1);
-            wait--;
-          }
-          for (int i = 0; i < amount; i++)
-          {
-				//Quaternion spawnRotation = Quaternion.Euler(Random.insideUnitSphere);
-				int index =	Calc.WeightedRandomIndex (hostileFrequencies);
-				Instantiate (asteroidPrefabs [index], GetRandomSpawnPoint (), asteroidPrefabs[index].transform.rotation);
-           		remaining--;
-            	yield return new WaitForSeconds(rate);
-            }
-          yield return new WaitForSeconds(10);
-			//WaveSpawner.Instance.NextWave(new Wave());
-          Destroy(this);
-        }
-    }
+    
     void OnGUI(){
         if (wait > 0){
            waitText = GUI.TextArea(new Rect((Screen.width/2)-60, 10, 120, 20), "Next Wave in: " + wait + " s" ,200);

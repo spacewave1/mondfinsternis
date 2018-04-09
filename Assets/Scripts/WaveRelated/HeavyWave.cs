@@ -1,6 +1,6 @@
 public class HeavyWave : Wave
 	{
-		protected override void SetValues(){
+		protected void SetValues(){
 			wait = 15;
 			rate = 2;
 			amount = 30;
