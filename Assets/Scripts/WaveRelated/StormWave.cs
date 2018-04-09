@@ -1,6 +1,6 @@
 public class StormWave : Wave
 	{
-		protected override void SetValues(){
+		protected void SetValues(){
 			wait = 5;
 			rate = 0.5f;
 			amount = 20;

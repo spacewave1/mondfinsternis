@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18029547, g: 0.22572713, b: 0.30692995, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -112,6 +112,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &151468472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 151468474}
+  - component: {fileID: 151468475}
+  - component: {fileID: 151468473}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &151468473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151468472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 750d34237574744e59772a7bc7b0bd09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfWaves: 5
+  spawnRadius: 42
+  spawnHeight: 0
+  spawnHeightOffset: 0
+  spawnWait: 0
+  prefabs:
+  - {fileID: 0}
+  waves:
+  - wait: -123
+    rate: 0
+    amount: 0
+    remaining: 0
+    spread: 0
+    direction: 0
+    prefabs: []
+    hostileFrequencies: 0000000000000000000000000000000000000000
+  - wait: 0
+    rate: 0
+    amount: 0
+    remaining: 0
+    spread: 0
+    direction: 0
+    prefabs: []
+    hostileFrequencies: 
+  debug: 0
+--- !u!4 &151468474
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151468472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4226391, y: -0.8201556, z: -0.9666071}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &151468475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 151468472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46f26e594aef4ae68ce814b02e86ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &450071554
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +197,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 450071555}
+  - component: {fileID: 450071557}
   - component: {fileID: 450071556}
   m_Layer: 0
   m_Name: Game Manager
@@ -150,6 +228,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 750d34237574744e59772a7bc7b0bd09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfWaves: 0
+  spawnRadius: 0
+  spawnHeight: 0
+  spawnHeightOffset: 0
+  spawnWait: 0
+  prefabs: []
+  waves: []
+  debug: 0
+--- !u!114 &450071557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 450071554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46f26e594aef4ae68ce814b02e86ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1254907988

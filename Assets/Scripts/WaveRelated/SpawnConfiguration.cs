@@ -1,29 +1,23 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine;
 
+[RequireComponent(typeof(WaveSpawner))]
 public class SpawnConfiguration : MonoBehaviour
 {
 	public int numberOfWaves;
-	public GameObject smallAsteroidPrefab;
-	public GameObject largeAsteroidPrefab;
-	public GameObject fastAsteroidPrefab;
-	public int spawnRadius = 30;
-	public int spawnHeight = 10;
-	public int spawnHeightOffset = -2;
-	public float spawnWait = 5;
-	private Wave[] waves;
-	private GameObject[] prefabs;
-	public Wave wave;
-	private string waveDebug = "";
-	public static bool debug = false;
-	private bool spawningWave;
+	public int spawnRadius;
+	public int spawnHeight;
+	public int spawnHeightOffset;
+	public float spawnWait;
+	public GameObject[] prefabs;
+    public Wave[] waves;
+	public bool debug;
 
 	private GuiManager guiManager;
 
-	public SpawnConfiguration ()
+	public void Start()
 	{
-		
+        GetComponent<WaveSpawner>().Configure(this);
 	}
 }
 

@@ -5,22 +5,79 @@ using UnityEditor;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public int numberOfWaves;
-    public GameObject smallAsteroidPrefab;
-    public GameObject largeAsteroidPrefab;
-    public GameObject fastAsteroidPrefab;
-	public Wave[] waves;
-    public int spawnRadius = 30;
-    public int spawnHeight = 10;
-    public int spawnHeightOffset = -2;
-    public float spawnWait = 5;
-    private GameObject[] prefabs;
-    private string waveDebug = "";
-    public static bool debug = false;
-    private bool spawningWave;
+    private int _numberOfWaves;
+    public int numberOfWaves
+    {
+        get { return _numberOfWaves; }
+    }
+
+    private Wave[] _waves;
+    public Wave[] waves
+    {
+        get { return _waves; }
+    }
+
+    private int _spawnRadius;
+    public int spawnRadius
+    {
+        get { return spawnRadius; }
+    }
+
+    private int _spawnHeight;
+    public int spawnHeight
+    {
+        get { return spawnHeight; }
+    }
+
+    private int _spawnHeightOffset;
+    public int spawnHeightOffset
+    {
+        get { return spawnHeightOffset; }
+    }
+
+    private float _spawnWait;
+    public float spawnWait
+    {
+        get { return spawnWait; }
+    }
+
+    private GameObject[] _prefabs = null;
+    public GameObject[] prefabs
+    {
+        get { return _prefabs; }
+    }
+
+    private string _waveDebug = "";
+    public string waveDebug
+    {
+        get { return _waveDebug; }
+    }
+
+    private bool _debug = false;
+    public bool debug
+    {
+        get { return _debug; }
+    }
+
+    private bool _spawningWave;
+    public bool spawningWave
+    {
+        get { return _spawningWave; }
+    }
+
 	public static WaveSpawner Instance = null;
 
 	private GuiManager guiManager;
+
+    public void Configure(SpawnConfiguration spawnConfiguration)
+    {
+        this._numberOfWaves = spawnConfiguration.numberOfWaves;
+        this._spawnRadius = spawnConfiguration.spawnRadius;
+        this._spawnHeight = spawnConfiguration.spawnHeight;
+        this._spawnHeightOffset = spawnConfiguration.spawnHeightOffset;
+        this._spawnWait = spawnConfiguration.spawnWait;
+        this._prefabs = spawnConfiguration.prefabs;
+    }
 
 	public void setGuiManager(GuiManager guiManager){
 		this.guiManager = guiManager;
@@ -31,39 +88,47 @@ public class WaveSpawner : MonoBehaviour
 			Instance = this;
 		}
     }
+    public void initSpawn(Wave wave)
+    {
+;
+    }
+    protected IEnumerator Spawn(Wave wave)
+    {
+
+        //if (AsteroidController.asteroidCount == 0)
+        {
+            while (wave.wait > 0)
+            {
+                yield return new WaitForSeconds(1);
+                wave.wait--;
+            }
+            for (int i = 0; i < wave.amount; i++)
+            {
+                //Quaternion spawnRotation = Quaternion.Euler(Random.insideUnitSphere);
+                int index = Calc.WeightedRandomIndex(wave.hostileFrequencies);
+                Instantiate(wave.prefabs[index], wave.GetRandomSpawnPoint(), wave.prefabs[index].transform.rotation);
+                wave.remaining--;
+                yield return new WaitForSeconds(wave.rate);
+            }
+            yield return new WaitForSeconds(10);
+            //WaveSpawner.Instance.NextWave(new Wave());
+            Destroy(this);
+        }
+    }
     public void Start()
     {
-        GameObject[] prefabs = { smallAsteroidPrefab, largeAsteroidPrefab, fastAsteroidPrefab };
-        this.prefabs = prefabs;
-		waves = new Wave[numberOfWaves];
+        Debug.Log(_numberOfWaves);
+		_waves = new Wave[_numberOfWaves];
 		//NextWave(new Wave());
-		guiManager.StartCountDown ();
+		//guiManager.StartCountDown ();
     }
 	public Wave initWave(){
 		Wave wave = null;
 
 		if (Game.level < 0)
 		{
-			wave = new GameObject ().AddComponent<StandardWave>();
-		}
-		else
-		{
-			switch (Game.level % 3)
-			{
-			case 1:
-				wave = new GameObject().AddComponent<StandardWave>();
-				break;
-			case 0:
-				wave = new GameObject().AddComponent<HeavyWave>();
-				break;
-			case 2:
-				wave = new GameObject().AddComponent<StormWave>();
-				break;
-			default:
-				wave = new GameObject().AddComponent<StandardWave>();
-				break;
-			}
-		}
+            StartCoroutine(Spawn(wave));
+        }
 		return wave;
 	}
 
@@ -71,42 +136,16 @@ public class WaveSpawner : MonoBehaviour
     {
         if (debug)
         {
-            waveDebug = GUI.TextArea(new Rect(10, Screen.height - 210, 200, 200), waveDebug, 200);
+            _waveDebug = GUI.TextArea(new Rect(10, Screen.height - 210, 200, 200), waveDebug, 200);
         }
     }
 	public void NextWave(Wave wave)
     {
    		if (numberOfWaves > Game.level){
 			Game.level++;
-			SpawningSequence(wave);
+			//SpawningSequence(wave);
         	wave.Setup();
-        	wave.enabled = true;
-        	waveDebug = wave.GetDebugText();
+        	_waveDebug = wave.GetDebugText();
       }
-    }
-	public void SpawningSequence(Wave wave)
-    {
-		if (Game.level < 0)
-        {
-            wave = gameObject.AddComponent<StandardWave>();
-        }
-        else
-        {
-			switch (Game.level % 3)
-            {
-                case 1:
-                    wave = gameObject.AddComponent<StandardWave>();
-                    break;
-                case 0:
-                    wave = gameObject.AddComponent<HeavyWave>();
-                    break;
-                case 2:
-                    wave = gameObject.AddComponent<StormWave>();
-                    break;
-                default:
-                    wave = gameObject.AddComponent<StandardWave>();
-                    break;
-            }
-        }
     }
 }
