@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
     {
         get { return _numberOfWaves; }
     }
-
+		
     private List<Wave> _waves;
     public List<Wave> waves
     {
@@ -78,7 +78,7 @@ public class WaveSpawner : MonoBehaviour
         this._spawnWait = spawnConfiguration.spawnWait;
         this._prefabs = spawnConfiguration.prefabs;
     }
-
+		
 	public void SetWaveSequence(SpawnConfiguration spawnConfiguration){
 		Wave wave;
 		for (int i = 0; i < numberOfWaves; i++) {
@@ -86,6 +86,7 @@ public class WaveSpawner : MonoBehaviour
 			_waves.add (wave);
 		}
 	}
+
 
 	public void setGuiManager(GuiManager guiManager){
 		this.guiManager = guiManager;
@@ -123,12 +124,16 @@ public class WaveSpawner : MonoBehaviour
     public void Start()
     {
         Debug.Log(_numberOfWaves);
+
 		_waves = new List<Wave>();
 		NextWave();
 		//guiManager.StartCountDown ();
     }
 	public Wave initSpawn(Wave wave){
         StartCoroutine(Spawn(wave));    
+		_waves = new Wave[_numberOfWaves];
+		NextWave();
+		//guiManager.StartCountDown ();
 		return wave;
 	}
 

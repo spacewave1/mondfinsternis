@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18029547, g: 0.22572713, b: 0.30692995, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -145,8 +145,30 @@ MonoBehaviour:
   spawnHeight: 0
   spawnHeightOffset: 0
   spawnWait: 0
+<<<<<<< HEAD
   prefabs: []
   wavesTypes: []
+=======
+  prefabs:
+  - {fileID: 0}
+  waves:
+  - wait: -123
+    rate: 0
+    amount: 0
+    remaining: 0
+    spread: 0
+    direction: 0
+    prefabs: []
+    hostileFrequencies: 0000000000000000000000000000000000000000
+  - wait: 0
+    rate: 0
+    amount: 0
+    remaining: 0
+    spread: 0
+    direction: 0
+    prefabs: []
+    hostileFrequencies: 
+>>>>>>> 54944518d92fa841ef951a6032ba656a215ebabe
   debug: 0
 --- !u!4 &151468474
 Transform:
@@ -213,12 +235,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750d34237574744e59772a7bc7b0bd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   numberOfWaves: 5
+=======
+  numberOfWaves: 0
+>>>>>>> 54944518d92fa841ef951a6032ba656a215ebabe
   spawnRadius: 0
   spawnHeight: 0
   spawnHeightOffset: 0
   spawnWait: 0
   prefabs: []
+<<<<<<< HEAD
   wavesTypes:
   - wait: 0
     rate: 0
@@ -244,6 +271,9 @@ MonoBehaviour:
     direction: 0
     prefabs: []
     hostileFrequencies: 
+=======
+  waves: []
+>>>>>>> 54944518d92fa841ef951a6032ba656a215ebabe
   debug: 0
 --- !u!114 &450071557
 MonoBehaviour:
