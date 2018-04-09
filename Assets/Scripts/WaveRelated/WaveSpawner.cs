@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEditor;
 
@@ -10,7 +11,7 @@ public class WaveSpawner : MonoBehaviour
     {
         get { return _numberOfWaves; }
     }
-
+		
     private List<Wave> _waves;
     public List<Wave> waves
     {
@@ -78,14 +79,15 @@ public class WaveSpawner : MonoBehaviour
         this._spawnWait = spawnConfiguration.spawnWait;
         this._prefabs = spawnConfiguration.prefabs;
     }
-
+		
 	public void SetWaveSequence(SpawnConfiguration spawnConfiguration){
 		Wave wave;
 		for (int i = 0; i < numberOfWaves; i++) {
-			wave = spawnConfiguration.wavesTypes[i%spawnConfiguration.wavesTypes.Length]
-			_waves.add (wave);
+			wave = spawnConfiguration.wavesTypes [i % spawnConfiguration.wavesTypes.Length];
+			_waves.Add (wave);
 		}
 	}
+
 
 	public void setGuiManager(GuiManager guiManager){
 		this.guiManager = guiManager;
@@ -123,12 +125,15 @@ public class WaveSpawner : MonoBehaviour
     public void Start()
     {
         Debug.Log(_numberOfWaves);
+
 		_waves = new List<Wave>();
 		NextWave();
 		//guiManager.StartCountDown ();
     }
 	public Wave initSpawn(Wave wave){
         StartCoroutine(Spawn(wave));    
+		NextWave();
+		//guiManager.StartCountDown ();
 		return wave;
 	}
 
@@ -142,10 +147,9 @@ public class WaveSpawner : MonoBehaviour
 	public void NextWave()
     {
 		_waves [0].Setup();
-    	_waveDebug = _waves.GetDebugText();
+    	_waveDebug = _waves[0].GetDebugText();
 		initSpawn (_waves[0]);
-		_waves.removeAt (0);
+		_waves.RemoveAt (0);
 		Game.level++;
       }
-    }
 }
