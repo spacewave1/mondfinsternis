@@ -10,7 +10,7 @@ public class SpawnConfiguration : MonoBehaviour
 	public int spawnHeightOffset;
 	public float spawnWait;
 	public GameObject[] prefabs;
-    public Wave[] wavesTypes;
+    public Wave[] waveTypes;
 	public bool debug;
 
 	private GuiManager guiManager;

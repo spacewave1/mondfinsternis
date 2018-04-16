@@ -21,25 +21,25 @@ public class WaveSpawner : MonoBehaviour
     private int _spawnRadius;
     public int spawnRadius
     {
-        get { return spawnRadius; }
+        get { return _spawnRadius; }
     }
 
     private int _spawnHeight;
     public int spawnHeight
     {
-        get { return spawnHeight; }
+        get { return _spawnHeight; }
     }
 
     private int _spawnHeightOffset;
     public int spawnHeightOffset
     {
-        get { return spawnHeightOffset; }
+        get { return _spawnHeightOffset; }
     }
 
     private float _spawnWait;
     public float spawnWait
     {
-        get { return spawnWait; }
+        get { return _spawnWait; }
     }
 
     private GameObject[] _prefabs = null;
@@ -83,7 +83,7 @@ public class WaveSpawner : MonoBehaviour
 	public void SetWaveSequence(SpawnConfiguration spawnConfiguration){
 		Wave wave;
 		for (int i = 0; i < numberOfWaves; i++) {
-			wave = spawnConfiguration.wavesTypes [i % spawnConfiguration.wavesTypes.Length];
+			wave = spawnConfiguration.waveTypes [i % spawnConfiguration.waveTypes.Length];
 			_waves.Add (wave);
 		}
 	}
@@ -97,13 +97,14 @@ public class WaveSpawner : MonoBehaviour
 		if (Instance == null) {
 			Instance = this;
 		}
+        _waves = new List<Wave>();
     }
 
     protected IEnumerator Spawn(Wave wave)
     {
 
         //if (AsteroidController.asteroidCount == 0)
-        {
+        
             while (wave.wait > 0)
             {
                 yield return new WaitForSeconds(1);
@@ -119,20 +120,20 @@ public class WaveSpawner : MonoBehaviour
             }
             yield return new WaitForSeconds(10);
             NextWave();
-            Destroy(this);
-        }
+        yield return null;
+            
     }
     public void Start()
     {
         Debug.Log(_numberOfWaves);
 
-		_waves = new List<Wave>();
-		NextWave();
+		//_waves = new List<Wave>();
+        NextWave();
 		//guiManager.StartCountDown ();
     }
 	public Wave initSpawn(Wave wave){
         StartCoroutine(Spawn(wave));    
-		NextWave();
+		//NextWave();
 		//guiManager.StartCountDown ();
 		return wave;
 	}

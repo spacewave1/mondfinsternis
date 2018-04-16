@@ -5,10 +5,10 @@ using System.Collections;
 [System.Serializable]
 public class Wave 
 {
+
     public int wait;
     public float rate;
     public int amount;
-    public int remaining;
     public int spread;
     public int direction;
     public GameObject[] prefabs;
@@ -19,7 +19,8 @@ public class Wave
     protected int rMin;
     protected int rMax;
     //GUI
-    string waitText;
+    private string waitText;
+    public int remaining;
 
 
     /// <summary>
@@ -34,6 +35,7 @@ public class Wave
     //protected void SetValues();
     protected void SetSpawnBounds()
     {
+        Debug.Log("Hello");
         rMin = direction - (spread / 2);
         rMax = direction + (spread / 2);
         yMin = 0 + WaveSpawner.Instance.spawnHeightOffset;
