@@ -19,15 +19,15 @@ public class WeaponHUDBehaviour : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			selectWeapon (enums.hudWeapon.LASER_CANNON_PANEL);
-			//TurretWeapons.Instance.PreviousSecondary ();
-			//gameObject.GetComponent<Text>().text = TurretWeapons.Instance.selectedSecondary.ToString();
+			//PlayerWeapons.Instance.PreviousSecondary ();
+			//gameObject.GetComponent<Text>().text = PlayerWeapons.Instance.selectedSecondary.ToString();
 		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			selectWeapon (enums.hudWeapon.BULLET_CANNON_PANEL);
-			//TurretWeapons.Instance.NextSecondary ();
-			//gameObject.GetComponent<Text>().text = TurretWeapons.Instance.selectedSecondary.ToString();
+			//PlayerWeapons.Instance.NextSecondary ();
+			//gameObject.GetComponent<Text>().text = PlayerWeapons.Instance.selectedSecondary.ToString();
 		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
 			selectWeapon (enums.hudWeapon.SECONDARY_WEAPON_PANEL);
-			//TurretWeapons.Instance.NextSecondary ();
+			//PlayerWeapons.Instance.NextSecondary ();
 		}
 	}
 

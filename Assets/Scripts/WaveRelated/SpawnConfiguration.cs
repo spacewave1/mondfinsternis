@@ -12,6 +12,7 @@ public class SpawnConfiguration : MonoBehaviour
 	public GameObject[] prefabs;
     public Wave[] waveTypes;
 	public bool debug;
+    public int[] spawnSequence;
 
 	private GuiManager guiManager;
 

@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: f6668b173fc16124ba6ee0d489e31dab
+timeCreated: 1524403176
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: abzug
+    100002: bone.abzug
+    100004: bone.hammer
+    100006: bone.tank
+    100008: bone.waffe
+    100010: hammer
+    100012: //RootNode
+    100014: marvin
+    100016: tank.mana
+    100018: waffe
+    400000: abzug
+    400002: bone.abzug
+    400004: bone.hammer
+    400006: bone.tank
+    400008: bone.waffe
+    400010: hammer
+    400012: //RootNode
+    400014: marvin
+    400016: tank.mana
+    400018: waffe
+    4300000: waffe
+    4300002: tank.mana
+    4300004: abzug
+    4300006: hammer
+    7400000: marvin|ArmatureAction
+    7400002: marvin|CameraAction
+    9500000: //RootNode
+    13700000: abzug
+    13700002: hammer
+    13700004: tank.mana
+    13700006: waffe
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clean.metal
+    second: {fileID: 2100000, guid: 4fb2af773fffc5a45a516f4140b11c05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass.fire
+    second: {fileID: 2100000, guid: f7b131b0e7b1d0e4481951ed6ac82935, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: iron.cast
+    second: {fileID: 2100000, guid: afb3692b6c3c7c740b8bd0c4ba2ef13c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.old
+    second: {fileID: 2100000, guid: 11058a9076789d047b734e4e15330c6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.plate
+    second: {fileID: 2100000, guid: 196e2bab17b380c489c90edf5041dd73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 4cff3c5d607080040852b48a4c9c8880, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

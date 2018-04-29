@@ -23,15 +23,15 @@ public class PointHUD : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			updatePoints (enums.hudPoints.SCORE_PANEL, 300);
-			//TurretWeapons.Instance.PreviousSecondary ();
-			//gameObject.GetComponent<Text>().text = TurretWeapons.Instance.selectedSecondary.ToString();
+			//PlayerWeapons.Instance.PreviousSecondary ();
+			//gameObject.GetComponent<Text>().text = PlayerWeapons.Instance.selectedSecondary.ToString();
 		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			updatePoints (enums.hudPoints.CRYSTALS_PANEL, 200);
-			//TurretWeapons.Instance.NextSecondary ();
-			//gameObject.GetComponent<Text>().text = TurretWeapons.Instance.selectedSecondary.ToString();
+			//PlayerWeapons.Instance.NextSecondary ();
+			//gameObject.GetComponent<Text>().text = PlayerWeapons.Instance.selectedSecondary.ToString();
 		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
 			updatePoints (enums.hudPoints.HEALTH_PANEL, 0.1f);
-			//TurretWeapons.Instance.NextSecondary ();
+			//PlayerWeapons.Instance.NextSecondary ();
 		}
 
 		//text.text = ""+crystals;

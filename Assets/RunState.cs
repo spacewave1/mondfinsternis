@@ -1,0 +1,61 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class RunState : StateMachineBehaviour {
+
+    public AudioClip runClip;
+
+    private NavMeshAgent navMeshAgent;
+    private Transform target;
+
+	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        animator.GetComponent<AudioSource>().loop = true;
+        animator.GetComponent<AudioSource>().clip = runClip;
+        animator.GetComponent<AudioSource>().Play();
+        target = animator.GetComponent<WolfBehaviour>().target;
+        navMeshAgent = animator.GetComponent<NavMeshAgent>();
+        navMeshAgent.speed = animator.GetComponent<WolfBehaviour>().speed;
+    }
+
+	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetFloat("speed", navMeshAgent.speed);
+
+        if (!navMeshAgent.pathPending)
+        {
+            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+            {
+                if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
+                {
+                    
+                    animator.SetTrigger("attack");
+                    animator.SetBool("isAttacking", true);
+                }
+            }
+            else
+            {
+                navMeshAgent.SetDestination(target.position);
+            }
+        }
+        Debug.Log("is Running");
+	}
+
+	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    //    
+    //}
+
+	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
+	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+	//
+	//}
+
+	// OnStateIK is called right after Animator.OnAnimatorIK(). Code that sets up animation IK (inverse kinematics) should be implemented here.
+	//override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+	//
+	//}
+}

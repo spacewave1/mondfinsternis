@@ -83,7 +83,7 @@ public class WaveSpawner : MonoBehaviour
 	public void SetWaveSequence(SpawnConfiguration spawnConfiguration){
 		Wave wave;
 		for (int i = 0; i < numberOfWaves; i++) {
-			wave = spawnConfiguration.waveTypes [i % spawnConfiguration.waveTypes.Length];
+			wave = spawnConfiguration.waveTypes [spawnConfiguration.spawnSequence[i]];
 			_waves.Add (wave);
 		}
 	}

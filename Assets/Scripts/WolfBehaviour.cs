@@ -8,6 +8,7 @@ public class WolfBehaviour : MonoBehaviour {
     public float speed;
     public Transform target;
     public Collider detectionZone;
+    public Transform targetHand;
 
     private Animator anim;
     private Rigidbody rigidbody;
@@ -18,45 +19,28 @@ public class WolfBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         navMeshAgent = GetComponent<NavMeshAgent>();
         detectedColliders = new List<Collider>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        anim = GetComponent<Animator>();
+        targetHand = GameObject.FindGameObjectWithTag("SuitedForWolfTeeth").transform;
+
         rigidbody = GetComponent<Rigidbody>();
-        anim.SetBool("isRunning", true);
-        anim.SetFloat("speed", speed);
-        navMeshAgent.speed = 0f;
+        anim = GetComponent<Animator>();
+        transform.LookAt(target);
+        navMeshAgent.SetDestination(target.position);
     }
 	
 	// Update is called once per frame
 	void Update () {
-        transform.LookAt(target);
-        navMeshAgent.SetDestination(target.position);
+       
+    }
 
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("howl"))
+    public void TakeDamage(int amount)
+    {
+        if(GetComponent<HitPoints>() != null)
         {
-            navMeshAgent.speed = this.speed;
-            //rigidbody.MovePosition(transform.position + transform.forward * Time.deltaTime * speed);
-        }
-
-        if (!navMeshAgent.pathPending)
-        {
-            if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-            {
-                if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f)
-                {
-                    Debug.Log("bla");
-                    anim.SetBool("isRunning", false);
-                    anim.SetBool("isAttacking", true);
-                    anim.SetTrigger("attack");
-                }
-            }
-        }
-
-        Collider cache = CheckForPossibleCollissions();
-        if (cache != null)
-        {
-            //ChangeDirection(cache);
+            GetComponent<HitPoints>().ReduceHitPoints(amount);
         }
     }
 
@@ -94,4 +78,9 @@ public class WolfBehaviour : MonoBehaviour {
     {
         detectedColliders.Remove(col);
     }
+}
+
+class WolfState : StateMachineBehaviour
+{
+    [SerializeField] private float speed = 0.4f;
 }
