@@ -36,6 +36,8 @@ namespace DigitalRuby.PyroParticles
         [Tooltip("The speed of the collider.")]
         public float ProjectileColliderSpeed = 450.0f;
 
+        public Collider explosionZone;
+
         [Tooltip("The direction that the collider will go. For example, flame strike goes down, and fireball goes forward.")]
         public Vector3 ProjectileDirection = Vector3.forward;
 
@@ -99,14 +101,8 @@ namespace DigitalRuby.PyroParticles
                 ProjectileExplosionParticleSystem.transform.position = c.contacts[0].point;
                 ProjectileExplosionParticleSystem.Play();
                 FireBaseScript.CreateExplosion(c.contacts[0].point, ProjectileExplosionRadius, ProjectileExplosionForce);
-                foreach (ContactPoint contactPoint in c.contacts)
-                {
-                    Debug.Log(contactPoint.otherCollider.name);
-                    if(contactPoint.otherCollider.GetComponentInParent<WolfBehaviour>() != null)
-                    {
-                        contactPoint.otherCollider.GetComponentInParent<WolfBehaviour>().TakeDamage((int) ForceAmount);
-                    }
-                }
+                explosionZone.enabled = true;
+
                 if (CollisionDelegate != null)
                 {
                     CollisionDelegate(this, c.contacts[0].point);

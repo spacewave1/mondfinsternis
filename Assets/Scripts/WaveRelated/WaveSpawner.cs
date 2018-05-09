@@ -114,7 +114,13 @@ public class WaveSpawner : MonoBehaviour
             {
                 //Quaternion spawnRotation = Quaternion.Euler(Random.insideUnitSphere);
                 int index = Calc.WeightedRandomIndex(wave.hostileFrequencies);
+            if(i == 0)
+            {
+                Instantiate(wave.prefabs[0], wave.GetRandomSpawnPoint(), wave.prefabs[index].transform.rotation).GetComponent<Animator>().SetTrigger("howl");
+            } else
+            {
                 Instantiate(wave.prefabs[index], wave.GetRandomSpawnPoint(), wave.prefabs[index].transform.rotation);
+            }
                 wave.remaining--;
                 yield return new WaitForSeconds(wave.rate);
             }

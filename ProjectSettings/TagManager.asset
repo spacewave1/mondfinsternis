@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SuitedForWolfTeeth
-  - Fire
   - hostile
+  - SuitedForWolfTeeth
   layers:
   - Default
   - TransparentFX
@@ -16,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - detectableByHostiles
-  - ghostLayer
-  - fireWeapon
-  - hostile
+  - projectile
+  - 
+  - 
+  - 
   - 
   - 
   - 

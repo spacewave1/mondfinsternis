@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 
 public class HitPoints : MonoBehaviour
@@ -17,20 +18,13 @@ public class HitPoints : MonoBehaviour
     // The Gameobject with this script attached will take damage of the integer number amount
     public void ReduceHitPoints(int amount)
     {
+        Debug.Log(amount);
         Debug.Log("damage received");
         damage += amount;
 
     }
     // on Collision, hit-point-objects deal damage to each other equal to their remaining hit points
-    void OnCollisionEnter(Collision col)
-    {
-        Debug.Log(col.gameObject);
-        if (col.gameObject.GetComponent<HitPoints>() != null)
-        { //Catches objects with no health-script at all
-            col.gameObject.GetComponent<HitPoints>().ReduceHitPoints(hp);
-            hpHasChanged = true;
-        }
-    }
+    
     void FixedUpdate()
     {
         hp -= damage;
@@ -40,7 +34,10 @@ public class HitPoints : MonoBehaviour
             Debug.Log("object dead");
             if (gameObject.tag.Equals("hostile"))
             {
-                Destroy(gameObject);
+                GetComponent<Animator>().SetTrigger("die");
+                GetComponent<NavMeshAgent>().enabled = false;
+                GetComponent<AudioSource>().Stop();
+                Destroy(gameObject, 5);
             }
             if (!gameObject.tag.Equals("player"))
             {

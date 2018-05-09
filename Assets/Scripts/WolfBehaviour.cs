@@ -9,6 +9,7 @@ public class WolfBehaviour : MonoBehaviour {
     public Transform target;
     public Collider detectionZone;
     public Transform targetHand;
+    public int damage;
 
     private Animator anim;
     private Rigidbody rigidbody;
@@ -40,6 +41,7 @@ public class WolfBehaviour : MonoBehaviour {
     {
         if(GetComponent<HitPoints>() != null)
         {
+            Debug.Log("damage taken");
             GetComponent<HitPoints>().ReduceHitPoints(amount);
         }
     }

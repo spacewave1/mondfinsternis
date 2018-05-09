@@ -12,9 +12,14 @@ public class Knife : Weapon
         
     }
 
-    void OnCollision(Collider collider)
+    void OnTriggerEnter(Collider collider)
     {
-        if(collider.tag.Equals("hostile"))
+        Debug.Log(collider.tag);
+        if (collider.tag.Equals("hostile"))
+        {
             collider.GetComponentInParent<WolfBehaviour>().TakeDamage(damage);
+            GetComponent<AudioSource>().Play();
+        }
+            
     }
 }

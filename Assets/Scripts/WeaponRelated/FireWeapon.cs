@@ -12,9 +12,14 @@ public class FireWeapon : MonoBehaviour {
         if (gameObject.GetComponent<Launcher>() != null)
         {
             weapon = gameObject.GetComponent<Launcher>();
-			} else if (gameObject.GetComponent<RayGun>() != null){
+		} else if (gameObject.GetComponent<RayGun>() != null){
         weapon = gameObject.GetComponent<RayGun>();
-      } else {
+      } else if(gameObject.GetComponent<Knife>() != null)
+        {
+            weapon = gameObject.GetComponent<Knife>();
+        }
+
+        else {
             Debug.Log("No weapon component found!");
 				return;
         }
@@ -24,6 +29,7 @@ public class FireWeapon : MonoBehaviour {
 			weapon.Fire();
     }
 	public void SetToPrimary(){
+        Debug.Log(name);
 		weapon.SetToPrimary();
 	}
     //This Start-function checks once, which type of weapon is used and creates a reference to the Fire()-function

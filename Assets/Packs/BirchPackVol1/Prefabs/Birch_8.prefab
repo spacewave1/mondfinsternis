@@ -10,9 +10,9 @@ GameObject:
   - component: {fileID: 457598}
   - component: {fileID: 3381858}
   - component: {fileID: 2386544}
-  - component: {fileID: 65900158727341130}
-  - component: {fileID: 208163641729943368}
-  m_Layer: 8
+  - component: {fileID: 65445369403759902}
+  - component: {fileID: 208279354920500000}
+  m_Layer: 0
   m_Name: Birch_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7, y: 0, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,7 +88,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 166164}
   m_IsPrefabParent: 1
---- !u!65 &65900158727341130
+--- !u!65 &65445369403759902
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -98,9 +98,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 8.499886, z: 0.5}
-  m_Center: {x: -0.04, y: 4.0976715, z: -0.02}
---- !u!208 &208163641729943368
+  m_Size: {x: 0.57, y: 8.499886, z: 0.56}
+  m_Center: {x: -0.05, y: 4.0976715, z: 0.01}
+--- !u!208 &208279354920500000
 NavMeshObstacle:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,9 +109,9 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 3.2910001, y: 4.25, z: 3.311}
+  m_Extents: {x: 0.285, y: 4.249943, z: 0.28}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: -1.2110001, y: 4.098, z: 0.65000004}
+  m_Center: {x: -0.05, y: 4.097672, z: 0.01}
   m_TimeToStationary: 0.5

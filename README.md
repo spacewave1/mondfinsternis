@@ -27,3 +27,6 @@ light metal brush		: https://texturex.com/metal-textures/light-brushed-metal-tex
 metal-with-screws		: https://www.freepik.com/free-photo/metal-texture-with-screws_993327.htm
 gußeisen				: https://de.depositphotos.com/11066766/stock-photo-cast-iron-texture-closeup-background.html
 grass-texture			: https://opengameart.org/node/21684
+
+Font
+witch-font 				: http://www.fontspace.com/spideraysfonts/witches-magic

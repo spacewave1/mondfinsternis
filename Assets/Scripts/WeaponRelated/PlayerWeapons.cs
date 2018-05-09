@@ -45,6 +45,9 @@ public class PlayerWeapons : MonoBehaviour {
           FireSecondary();
         }
         if(rightHand.controller != null && rightHand.controller.GetHairTrigger())
+        {
+            FirePrimary();
+        }
         if (Input.GetKey(KeyCode.V))
         {
           FirePrimary();
